@@ -1,0 +1,15 @@
+failOnNothing:
+  match: [\s\S]
+  type: onMissing
+  fail: true
+  message: "[ERROR] File is empty"
+failOnNonAscii:
+  match: ([^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*)
+  type: onFind
+  fail: true
+  message: "[ERROR] Contains non-ascii characters"
+warnOnComments:
+  match: \/\*[\s\S]*?\*\/|\/\/.*
+  type: onFind
+  fail: false
+  message: "[WARNING] Contains JScript comments"
