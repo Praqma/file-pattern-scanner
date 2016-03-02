@@ -1,0 +1,11 @@
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running net.mars.unit.MapHelperTest
+Running net.mars.unit.RedMapperTest
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.228 sec - in net.mars.utilities.MapHelperTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.259 sec - in net.mars.mapper.RedMapperTest
+Running net.mars.unit.BlueMapperTest
+Running net.mars.unit.GreenMapperTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec - in net.mars.unit.BlueMapperTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 10, Time elapsed: 0.068 sec - in net.mars.unit.GreenMapperTest

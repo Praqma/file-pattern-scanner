@@ -2,7 +2,9 @@
 
 A simple tool for scanning files for predefined patterns and generating messages depending on its matches.
 
-## Defining rules
+## Usage
+
+### Defining rules
 
 In a rule you define: 
  * The name of the rule
@@ -39,8 +41,24 @@ warnOnComments:
   message: "WARNING: File still contains JavaScript comments"
 ```
 
-## Calling the script
+### Calling the script
 
-Define rules in a YAML config file and pass your config/files you want scanned as script arguments.
+After defining the rules, pass them into the script alongside the files you want scanned as arguments.
    
+Example:
 `groovy scanner rules.yml myFile.log`
+
+Output for our example:
+```
+[FILE: myFile.log]
+[RULE: failOnNonAscii]
+[4 matches]
+ERROR: File contains non-ASCII characters
+[RULE: warnOnComments]
+[1 match]
+WARNING: File still contains JavaScript comments
+
+Process finished with exit code 1
+```
+
+

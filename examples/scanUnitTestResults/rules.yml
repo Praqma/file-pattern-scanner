@@ -1,0 +1,15 @@
+runTests:
+  match: Tests run: ([0-9]*)+
+  type: onMissing
+  fail: true
+  message: "ERROR: No tests were run!"
+testFailures:
+  match: Failures: (?:[1-9][0-9]*)+
+  type: onFind
+  fail: true
+  message: "ERROR: Tests failed!"
+skippedTests:
+  match: Skipped: (?:[1-9][0-9]*)+
+  type: onFind
+  fail: false
+  message: "WARNING: Tests were skipped."
