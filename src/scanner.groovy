@@ -1,8 +1,9 @@
 @Grab(group = 'org.yaml', module = 'snakeyaml', version = '1.17')
 import org.yaml.snakeyaml.Yaml
 
-doArgsCheck()
+import java.util.regex.Matcher
 
+doArgsCheck()
 def rules = loadRules()
 
 def resultIsFailed = false
@@ -12,9 +13,10 @@ targetFiles.each { file ->
     def text = file.text
     rules.each { rule ->
         println "[RULE: $rule.title]"
-        if(triggers(rule, text)){
+        def matcher = text =~ rule.match
+        if(triggers(rule, matcher)){
             if(rule.fail) resultIsFailed = true
-            println rule.message
+            println expandMessage(matcher, rule)
         }
     }
 }
@@ -46,10 +48,24 @@ private ArrayList loadRules() {
     return rules
 }
 
-boolean triggers(def rule, String text) {
-    def matcher = text =~ rule.match
+boolean triggers(def rule, Matcher matcher) {
     println "[$matcher.count " + (matcher.count == 1 ? "match" : "matches") + "]"
     def foundOnFind = matcher.count > 0 && rule.type.equalsIgnoreCase("onFind")
     def missingOnMissing = matcher.count == 0 && rule.type.equalsIgnoreCase("onMissing")
     return foundOnFind || missingOnMissing
+}
+
+String expandMessage(Matcher originalMatcher, def rule) {
+    def message = rule.message
+    def replacerMatcher = message =~ /(?<![$])(\$[1-9]\d*)/
+    if(!replacerMatcher.count) return message;
+
+    for (int m = 1; m <= replacerMatcher.count; m++) {
+        if (originalMatcher.count < m) break;
+        println originalMatcher.groupCount()
+        println originalMatcher.group(0)
+        def groupMatcher = message =~ /(?<![$])(\$${m}(?!\d))/
+        message = groupMatcher.replaceFirst(originalMatcher.group(m))
+    }
+    return message
 }

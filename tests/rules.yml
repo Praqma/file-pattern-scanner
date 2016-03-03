@@ -3,11 +3,16 @@ failOnNothing:
   type: onMissing
   fail: true
   message: "[ERROR] File is empty"
+ReportE:
+  match: ([eE])*
+  type: onFind
+  fail: true
+  message: "[ERROR] Found E: $1"
 failOnNonAscii:
   match: ([^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*)
   type: onFind
   fail: true
-  message: "[ERROR] Contains non-ascii characters"
+  message: "[ERROR] Contains non-ascii characters $1"
 warnOnComments:
   match: \/\*[\s\S]*?\*\/|\/\/.*
   type: onFind
