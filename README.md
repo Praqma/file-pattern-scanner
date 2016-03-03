@@ -15,6 +15,7 @@ In a rule you define:
     * When a match **isn't** found
  * If the script fails when the rule is triggered
  * The message to print when the rule is triggered
+    * Supports simple regex group replacing
 
 Rules follow a simple format:
 
@@ -33,7 +34,7 @@ failOnNonAscii:
   match: ([^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*)
   type: onFind
   fail: true
-  message: "ERROR: File contains non-ASCII characters"
+  message: "ERROR: File contains non-ASCII characters (ex.: $1)"
 warnOnComments:
   match: \/\*[\s\S]*?\*\/|\/\/.*
   type: onFind
@@ -53,7 +54,7 @@ Output for our example:
 [FILE: myFile.log]
 [RULE: failOnNonAscii]
 [4 matches]
-ERROR: File contains non-ASCII characters
+ERROR: File contains non-ASCII characters  (ex.:　前に来た時は北側からで、当時の光景はいまでも思い出せる。)
 [RULE: warnOnComments]
 [1 match]
 WARNING: File still contains JavaScript comments
