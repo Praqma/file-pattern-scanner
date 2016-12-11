@@ -61,4 +61,14 @@ WARNING: File still contains JavaScript comments
 Process finished with exit code 1
 ```
 
+## Support, contributions and maintenance
 
+* Contributions are welcome, see [contributing file](/CONTRIBUTING.md).
+* PAC is maintained in the scope of [JOSRA](http://www.josra.org/).
+* Issue and work tracking is done using [Github issues](https://github.com/Praqma/file-pattern-scanner/issues)
+* Support requests and questions can be created as Github issue or send us an mail on support@praqma.net
+* Our roadmap is availbe in [roadmap](/roadmap.md)
+
+## Changes
+
+See [Releases](https://github.com/buep/file-pattern-scanner/release).

@@ -1,7 +1,12 @@
 @Grab(group = 'org.yaml', module = 'snakeyaml', version = '1.17')
 import org.yaml.snakeyaml.Yaml
 
+// automated version number, added by build automation
+String versionNumber = "0.0.0-dev"
+println "file-pattern-scanner version $versionNumber"
+
 doArgsCheck()
+
 
 def rules = loadRules()
 

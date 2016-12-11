@@ -1,0 +1,25 @@
+# Praqmatic Automated Changelog (PAC) settings file
+# Used to generate changelog based on Github issue references
+# https://github.com/Praqma/Praqmatic-Automated-Changelog
+:general:
+  date_template: '%Y-%m-%d'
+  :strict: false
+ 
+# the /data prefix is because we use a docker container for PAC, so it is the mount-in path in the container
+:templates:
+  - { location: /data/changelog_template.html, pdf: false, output: changelog.html }
+  - { location: /data/changelog_template.md, pdf: false, output: changelog.md }
+
+# user-name and password is supplied on command line
+:task_systems:
+  -
+    :name: jira
+    :query_string: "https://api.github.com/repos/praqma/file-pattern-scanner/issues/#{task_id}"
+    :usr:
+    :pw: 
+    :regex:
+    - { pattern: '/#(\d+)/i', label: github }      
+  
+:vcs:
+  :type: git
+  :repo_location: '.'
