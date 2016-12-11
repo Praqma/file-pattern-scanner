@@ -69,6 +69,9 @@ Process finished with exit code 1
 * Support requests and questions can be created as Github issue or send us an mail on support@praqma.net
 * Our roadmap is availbe in [roadmap](/roadmap.md)
 
+Build and delivery pipeline: http://code.praqma.net/ci/view/Open%20Source%20Pipelines/view/file-pattern-scanner/
+
+
 ## Changes
 
 See [Releases](https://github.com/buep/file-pattern-scanner/release).
