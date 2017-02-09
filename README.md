@@ -1,3 +1,7 @@
+---
+maintainer: buep
+---
+
 # File Pattern Scanner
 
 A simple tool for scanning files for predefined patterns and generating messages depending on its matches.
