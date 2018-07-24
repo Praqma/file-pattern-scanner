@@ -1,0 +1,25 @@
+plugins {
+    id 'groovy'
+    id 'com.palantir.git-version' version '0.11.0'
+}
+
+group 'com.praqma'
+version gitVersion()
+
+repositories {
+    jcenter()
+}
+
+configurations {
+    ivy
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.14'
+    testCompile 'junit:junit:4.12'
+    ivy 'org.apache.ivy:ivy:2.4.0'
+}
+
+tasks.withType(GroovyCompile) {
+    groovyClasspath += configurations.ivy
+}
